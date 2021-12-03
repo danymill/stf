@@ -25,6 +25,9 @@
   "bin": {
     "stf": "./bin/stf"
   },
+  "yargs": {
+    "duplicate-arguments-array": false
+  },
   "scripts": {
     "test": "gulp test",
     "prepublish": "bower install && not-in-install && gulp build || in-install"
@@ -100,7 +103,7 @@
     "websocket-stream": "^5.5.0",
     "ws": "^3.0.0",
     "yards": "^0.1.4",
-    "yargs": "^6.6.0",
+    "yargs": "6.6.0",
     "yauzl": "^2.10.0",
     "zmq": "^2.14.0"
   },
