@@ -22,17 +22,8 @@ module.exports = function InstallCtrl(
   }
 
   $scope.installFile = function($files) {
-
       if($scope.device && $scope.device.ios && $scope.device.ios === true) {
-        if ($files.length && $scope.bundleId !== '') {
-          return InstallService.installIosFile(
-            $scope.control,
-            $files,
-            $scope.device.serial,
-            $scope.bundleId)
-        } else {
-          InstallService.validationError('Bundle name is required !')
-        }
+          return InstallService.installIosFile($scope.control,$files,$scope.device.serial)
       } else {
         return InstallService.installFile($scope.control, $files)
       }
