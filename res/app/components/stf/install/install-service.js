@@ -141,7 +141,7 @@ module.exports = function InstallService(
     $rootScope.$broadcast('installation', installation)
     return StorageService.storeIosFile('app', $files, deviceId, {
       filter: function(file) {
-        return /\.(ipa\.app\.zip|app)$/i.test(file.name)
+        return /\.(ipa|app|zip)$/i.test(file.name)
       }
     })
       .progressed(function(e) {
