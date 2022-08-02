@@ -157,10 +157,7 @@ module.exports = function DeviceScreenDirective(
         }
 
         function shouldUpdateScreen() {
-          console.log("scope.$parent.showScreen: ", scope.$parent.showScreen)
           console.log("device.using: ", device.using)
-          console.log("!PageVisibilityService.hidden: ", !PageVisibilityService.hidden)
-          console.log("ws.readyState === WebSocket.OPEN: ", ws.readyState === WebSocket.OPEN)
           return (
             // NO if the user has disabled the screen.
             scope.$parent.showScreen &&
@@ -178,18 +175,22 @@ module.exports = function DeviceScreenDirective(
           var newEnabled = shouldUpdateScreen()
 
           if (newEnabled === cachedEnabled) {
+            console.log("updateBounds")
             updateBounds()
           }
           else if (newEnabled) {
+            console.log("updateBounds and onScreenInterestGained")
             updateBounds()
             onScreenInterestGained()
           }
           else {
+            console.log("onScreenInterestLost")
             g.clearRect(0, 0, canvas.width, canvas.height)
             onScreenInterestLost()
           }
-
+          console.log("cachedEnabled: ", cachedEnabled)
           cachedEnabled = newEnabled
+          console.log("cachedEnabled: ", cachedEnabled)
         }
 
         function onScreenInterestGained() {
