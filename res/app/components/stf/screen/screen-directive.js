@@ -361,7 +361,7 @@ module.exports = function DeviceScreenDirective(
 
         // NOTE: instead of fa-pane-resize, a fa-child-pane-resize could be better
         scope.$on('fa-pane-resize', _.debounce(updateBounds, 1000))
-        scope.$watch('device.using', checkEnabled)
+        scope.$on('device.using', checkEnabled)
         scope.$on('visibilitychange', checkEnabled)
         scope.$watch('$parent.showScreen', checkEnabled)
 
